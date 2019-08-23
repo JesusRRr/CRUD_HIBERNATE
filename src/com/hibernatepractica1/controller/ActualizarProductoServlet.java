@@ -67,6 +67,8 @@ Configuration cfg = new Configuration();
 		
 		int idProducto = Integer.parseInt(request.getParameter("txtIdProducto"));
 		
+		
+		
 		Gson miGson = new Gson();
 		salida.append(miGson.toJson(miProducto));
 		

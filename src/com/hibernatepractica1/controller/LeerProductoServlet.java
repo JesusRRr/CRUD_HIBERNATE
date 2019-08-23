@@ -62,7 +62,7 @@ public class LeerProductoServlet extends HttpServlet {
 		
 		int idProducto = Integer.parseInt(request.getParameter("txtIdProducto"));
 		Producto miProducto = new Producto();
-		
+		miProducto=session.get(Producto.class, idProducto);
 		
 		Gson miGson = new Gson();
 		salida.append(miGson.toJson(miProducto));
