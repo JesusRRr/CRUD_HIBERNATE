@@ -27,6 +27,14 @@
    		<li>
    			<a href="actualizarProducto.jsp">Actualizar producto</a>
    		</li>		
+   		
+   		<li>
+   			<a href="lecturageneral.jsp">Lectura general</a>
+   		</li>
+   		
+   		<li>
+   			<a href="borrarProducto.jsp">Borrar producto</a>
+   		</li>
     </div>
 
     <!-- Optional JavaScript -->

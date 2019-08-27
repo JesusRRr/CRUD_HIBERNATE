@@ -45,16 +45,13 @@ public class ActualizarProductoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.setContentType("application/Json");
-		Producto miProducto= new Producto();
+		//response.setContentType("application/Json");
+	
 		PrintWriter salida = response.getWriter();
 		
-		miProducto.setIdProducto(Integer.parseInt(request.getParameter("txtIdProducto")));
-		miProducto.setNombreProducto(request.getParameter("txtNombreProducto"));
-		miProducto.setPrecioProducto(Double.parseDouble(request.getParameter("txtPrecioProducto")));
-		miProducto.setExistenciaProducto(Integer.parseInt(request.getParameter("txtExistenciaProducto")));
-	
-Configuration cfg = new Configuration();
+		
+		
+		Configuration cfg = new Configuration();
 		
 		//Se crea el sessionFactory
 		SessionFactory factory = cfg.configure().buildSessionFactory();
@@ -64,15 +61,23 @@ Configuration cfg = new Configuration();
 				
 		//Se inicia la transaccion
 		Transaction transac = session.beginTransaction();
+	
+		// Obtenemos los valores 
 		
-		int idProducto = Integer.parseInt(request.getParameter("txtIdProducto"));
-		
-		
-		
+		Producto miProducto= new Producto();
+		miProducto.setIdProducto(Integer.parseInt(request.getParameter("txtIdProducto")));
+		miProducto.setNombreProducto(request.getParameter("txtNombreProducto"));
+		miProducto.setPrecioProducto(Double.parseDouble(request.getParameter("txtPrecioProducto")));
+		miProducto.setExistenciaProducto(Integer.parseInt(request.getParameter("txtExistenciaProducto")));
 		Gson miGson = new Gson();
+		
+		session.update(miProducto);
+		
+		
 		salida.append(miGson.toJson(miProducto));
 		
 		transac.commit();
+		
 		salida.close();
 	}
 
